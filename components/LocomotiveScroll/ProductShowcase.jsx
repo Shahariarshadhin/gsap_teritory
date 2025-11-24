@@ -68,7 +68,7 @@ export default function ProductShowcase() {
               ref={el => productsRef.current[index] = el}
               className="bg-green-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
             >
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-7xl">
+              <div className="h-48 flex items-center justify-center text-7xl">
                 {product.image}
               </div>
               <div className="p-6">
