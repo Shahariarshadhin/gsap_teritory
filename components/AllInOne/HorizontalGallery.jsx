@@ -13,12 +13,12 @@ export default function HorizontalGallery() {
   useEffect(() => {
     const section = sectionRef.current;
     const track = trackRef.current;
-    
+
     if (!section || !track) return;
 
     const ctx = gsap.context(() => {
       const cards = track.querySelectorAll(".gallery-card");
-      
+
       // Calculate total scroll distance
       const scrollDistance = track.scrollWidth - section.offsetWidth;
 
@@ -39,7 +39,7 @@ export default function HorizontalGallery() {
       // Parallax effect on images
       cards.forEach((card, i) => {
         const img = card.querySelector("img");
-        
+
         gsap.fromTo(
           img,
           { scale: 1.2, x: -50 },
@@ -54,7 +54,10 @@ export default function HorizontalGallery() {
               scrub: 1,
               onUpdate: (self) => {
                 const progress = self.progress;
-                const cardProgress = Math.max(0, Math.min(1, (progress - i * 0.2) * 2));
+                const cardProgress = Math.max(
+                  0,
+                  Math.min(1, (progress - i * 0.2) * 2)
+                );
                 gsap.to(img, {
                   scale: 1.2 - cardProgress * 0.2,
                   x: -50 + cardProgress * 50,
@@ -82,7 +85,7 @@ export default function HorizontalGallery() {
                 const progress = self.progress;
                 const cardStart = i * 0.15;
                 const cardEnd = cardStart + 0.3;
-                
+
                 if (progress >= cardStart && progress <= cardEnd) {
                   const localProgress = (progress - cardStart) / 0.3;
                   gsap.to(card, {
@@ -133,14 +136,12 @@ export default function HorizontalGallery() {
 
   return (
     <div className="bg-black">
-      <div className="h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
+      {/* <div className="h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
         <div className="text-center px-8">
-          <h1 className="text-6xl font-bold text-white mb-4">
-            Scroll Down
-          </h1>
+          <h1 className="text-6xl font-bold text-white mb-4">Scroll Down</h1>
           <p className="text-gray-400 text-xl">Experience the journey</p>
         </div>
-      </div>
+      </div> */}
 
       <section
         ref={sectionRef}
@@ -177,14 +178,12 @@ export default function HorizontalGallery() {
         </div>
       </section>
 
-      <div className="h-screen flex items-center justify-center bg-gradient-to-t from-gray-900 to-black">
+      {/* <div className="h-screen flex items-center justify-center bg-gradient-to-t from-gray-900 to-black">
         <div className="text-center px-8">
-          <h2 className="text-5xl font-bold text-white mb-4">
-            The End
-          </h2>
+          <h2 className="text-5xl font-bold text-white mb-4">The End</h2>
           <p className="text-gray-400 text-xl">Thanks for scrolling</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
